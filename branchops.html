@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiraz BranchOps - Restaurant compliance, handled.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .card-shadow:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            transform: translateY(-4px);
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Subtle background patterns */
+        .bg-pattern {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                        },
+                        hospitality: {
+                            orange: '#f97316',
+                            yellow: '#eab308',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased selection:bg-primary-100 selection:text-primary-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
+                    <i data-lucide="clipboard-check" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-900">Shiraz BranchOps</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#workflows" class="hover:text-primary-600 transition-colors">Workflows</a>
+                <a href="#solution" class="hover:text-primary-600 transition-colors">How it Works</a>
+                <a href="#dashboard" class="hover:text-primary-600 transition-colors">Reporting</a>
+                <a href="#pricing" class="hover:text-primary-600 transition-colors">Pricing</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="hidden md:block text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors mr-2">Shiraz AI</a>
+                <button class="hidden md:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Log in</button>
+                <a href="#demo" class="px-4 py-2 text-sm font-medium text-white gradient-bg rounded-lg hover:shadow-lg transition-all">Book Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 relative overflow-hidden bg-white">
+        <!-- Subtle background shapes -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="pt-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary-100 bg-primary-50 text-primary-700 text-sm font-medium mb-6 reveal">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+                    </span>
+                    AI-Native Managed Operations
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6 reveal delay-100 leading-[1.1]">
+                    Restaurant compliance, <span class="gradient-text">handled.</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-8 reveal delay-200 leading-relaxed">
+                    Shiraz BranchOps keeps every location inspection-ready with managed checklists, food safety logs, incident reports, complaint workflows, and audit-ready documentation.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 reveal delay-300">
+                    <a href="#demo" class="w-full sm:w-auto px-6 py-3 text-base font-medium text-white gradient-bg rounded-xl hover:shadow-[0_8px_20px_-6px_rgba(79,70,229,0.5)] transition-all text-center">
+                        Book a demo
+                    </a>
+                    <a href="#solution" class="w-full sm:w-auto px-6 py-3 text-base font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all text-center flex items-center justify-center gap-2">
+                        <i data-lucide="play-circle" class="w-5 h-5 text-primary-600"></i> See how it works
+                    </a>
+                </div>
+                
+                <div class="mt-10 flex items-center gap-4 text-sm text-slate-500 reveal delay-300">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=J&background=random" alt="Avatar">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=S&background=random" alt="Avatar">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://ui-avatars.com/api/?name=M&background=random" alt="Avatar">
+                    </div>
+                    <p>Trusted by <span class="font-semibold text-slate-700">500+</span> hospitality locations</p>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="relative reveal delay-200">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary-100 to-purple-100 rounded-2xl transform rotate-3 scale-105 opacity-50"></div>
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl relative overflow-hidden flex flex-col h-[500px]">
+                    <!-- Header -->
+                    <div class="px-5 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-primary-100 flex items-center justify-center text-primary-600 font-bold text-xs">HQ</div>
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-800">Compliance Overview</h3>
+                                <p class="text-xs text-slate-500">All Locations • Real-time</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="px-2.5 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> 98% Score</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5 flex-1 bg-slate-50 relative overflow-hidden">
+                        
+                        <!-- Map/Locations mock -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="text-xs font-semibold text-slate-700">Downtown Branch</div>
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="text-[10px] text-slate-500 mb-2">Opening list complete</div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full w-full"></div></div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm border-l-2 border-l-red-500">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="text-xs font-semibold text-slate-700">Westside Cafe</div>
+                                    <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                                </div>
+                                <div class="text-[10px] text-red-600 mb-2 font-medium">Missing temp log!</div>
+                                <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-red-500 h-1.5 rounded-full w-[80%]"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Alerts -->
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3 items-center animate-slide-up" style="animation-delay: 0.5s">
+                                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
+                                    <i data-lucide="alert-circle" class="w-4 h-4 text-orange-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs font-semibold text-slate-800">Customer Complaint routed</div>
+                                    <div class="text-[10px] text-slate-500">Escalated to Area Manager (Uptown)</div>
+                                </div>
+                                <div class="text-[10px] text-slate-400">2m ago</div>
+                            </div>
+                            
+                            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex gap-3 items-center animate-slide-up" style="animation-delay: 1s">
+                                <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center shrink-0">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-primary-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs font-semibold text-slate-800">Monthly Audit Pack ready</div>
+                                    <div class="text-[10px] text-slate-500">Generated by AI • Inspection ready</div>
+                                </div>
+                                <div class="text-xs font-medium text-primary-600 cursor-pointer">Download</div>
+                            </div>
+                        </div>
+
+                        <!-- AI Floating badge -->
+                        <div class="absolute bottom-6 right-6 bg-slate-900 text-white p-3 rounded-xl shadow-xl flex items-center gap-3 animate-float max-w-[200px] border border-slate-700">
+                            <div class="w-8 h-8 rounded-lg bg-primary-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="sparkles" class="w-4 h-4 text-primary-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-400 font-medium uppercase tracking-wider">AI Action taken</div>
+                                <div class="text-xs font-medium mt-0.5">Chased Westside for fridge logs</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-24 bg-slate-50 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Your branches are running on <span class="text-slate-400 line-through">spreadsheets</span> WhatsApp, and hope.</h2>
+                <p class="text-slate-600 text-lg">The reality of hospitality operations is chaotic. Standard tools just give you blank forms. They don't make sure the work actually gets done.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Pain Cards -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-100">
+                    <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center mb-4">
+                        <i data-lucide="clipboard-x" class="w-5 h-5 text-red-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Checklists get forgotten</h3>
+                    <p class="text-sm text-slate-600">Managers are busy serving customers. Opening and closing lists are often filled out at the end of the week, defeating the purpose.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-200">
+                    <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center mb-4">
+                        <i data-lucide="thermometer" class="w-5 h-5 text-orange-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Incomplete safety logs</h3>
+                    <p class="text-sm text-slate-600">Fridge temperatures and food hygiene records are missing crucial data, creating massive liability during inspections.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-300">
+                    <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center mb-4">
+                        <i data-lucide="file-warning" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Expired certificates</h3>
+                    <p class="text-sm text-slate-600">Vendor docs, pest control reports, and staff training certificates expire without HQ knowing until an auditor asks for them.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-100">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mb-4">
+                        <i data-lucide="clock" class="w-5 h-5 text-purple-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Late incident reporting</h3>
+                    <p class="text-sm text-slate-600">Customer complaints or staff incidents stay in the branch manager's notebook for days before being escalated properly.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-200">
+                    <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center mb-4">
+                        <i data-lucide="eye-off" class="w-5 h-5 text-slate-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Zero real-time visibility</h3>
+                    <p class="text-sm text-slate-600">HQ has to physically visit locations or chase people on WhatsApp to know if a branch is actually compliant today.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow reveal delay-300">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900 mb-2">Last-minute chaos</h3>
+                    <p class="text-sm text-slate-600">When an EHO (Environmental Health Officer) walks in, it's a frantic scramble to find the right binders and paperwork.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-24 px-6 bg-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-3 py-1 bg-primary-50 text-primary-600 text-xs font-bold rounded-full mb-4 tracking-wider uppercase">The BranchOps Difference</div>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">We don't give you another tool. <br/><span class="gradient-text">We run the workflow.</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Standard software just sits there waiting for input. BranchOps actively collects, reminds, follows up, reviews, flags risks, and generates reports for you.</p>
+            </div>
+
+            <!-- 3 Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Connecting line (desktop) -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-primary-100 via-primary-300 to-primary-100 z-0"></div>
+
+                <div class="text-center relative z-10 reveal delay-100">
+                    <div class="w-20 h-20 mx-auto bg-white border-4 border-primary-50 rounded-2xl shadow-lg flex items-center justify-center mb-6 relative">
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full gradient-bg text-white font-bold flex items-center justify-center border-2 border-white">1</div>
+                        <i data-lucide="settings-2" class="w-8 h-8 text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Set up branch workflows</h3>
+                    <p class="text-sm text-slate-600">We digitize your specific checklists, HACCP logs, and SOPs into our smart system.</p>
+                </div>
+
+                <div class="text-center relative z-10 reveal delay-200">
+                    <div class="w-20 h-20 mx-auto bg-white border-4 border-primary-50 rounded-2xl shadow-lg flex items-center justify-center mb-6 relative">
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full gradient-bg text-white font-bold flex items-center justify-center border-2 border-white">2</div>
+                        <i data-lucide="bot" class="w-8 h-8 text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI collects & chases</h3>
+                    <p class="text-sm text-slate-600">Our system automatically prompts managers, chases late submissions via SMS/Email, and reviews entries for anomalies.</p>
+                </div>
+
+                <div class="text-center relative z-10 reveal delay-300">
+                    <div class="w-20 h-20 mx-auto bg-white border-4 border-primary-50 rounded-2xl shadow-lg flex items-center justify-center mb-6 relative">
+                        <div class="absolute -top-3 -right-3 w-8 h-8 rounded-full gradient-bg text-white font-bold flex items-center justify-center border-2 border-white">3</div>
+                        <i data-lucide="shield-check" class="w-8 h-8 text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Get audit-ready reports</h3>
+                    <p class="text-sm text-slate-600">HQ gets a real-time dashboard of risk alerts, plus beautifully formatted compliance packs ready for any inspector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Workflows Section -->
+    <section id="workflows" class="py-24 px-6 bg-slate-50 relative border-y border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal flex flex-col md:flex-row justify-between items-end gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Everything your locations need to stay compliant.</h2>
+                    <p class="text-slate-600">A complete suite of workflows specifically built for the realities of food service and hospitality.</p>
+                </div>
+                <button class="text-primary-600 font-semibold hover:text-primary-700 flex items-center gap-2 transition-colors">
+                    View all templates <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Feature Items -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal">
+                    <i data-lucide="check-square" class="w-6 h-6 text-primary-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Daily Checklists</h4>
+                    <p class="text-xs text-slate-500">Opening & closing routines.</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-100">
+                    <i data-lucide="thermometer-snowflake" class="w-6 h-6 text-blue-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Temperature Logs</h4>
+                    <p class="text-xs text-slate-500">Fridge/freezer HACCP compliance.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-200">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-teal-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Hygiene Reports</h4>
+                    <p class="text-xs text-slate-500">Deep cleaning schedules.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-300">
+                    <i data-lucide="alert-octagon" class="w-6 h-6 text-red-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Incident Reports</h4>
+                    <p class="text-xs text-slate-500">Staff or safety incidents.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-100">
+                    <i data-lucide="message-square-warning" class="w-6 h-6 text-orange-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Complaints</h4>
+                    <p class="text-xs text-slate-500">Customer issue routing.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-200">
+                    <i data-lucide="wrench" class="w-6 h-6 text-slate-600 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Maintenance</h4>
+                    <p class="text-xs text-slate-500">Equipment repair requests.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-300">
+                    <i data-lucide="file-badge" class="w-6 h-6 text-indigo-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Vendor Docs</h4>
+                    <p class="text-xs text-slate-500">Certificates & expiry tracking.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal">
+                    <i data-lucide="users" class="w-6 h-6 text-pink-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Staff Training</h4>
+                    <p class="text-xs text-slate-500">Policy acknowledgements.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-100">
+                    <i data-lucide="clipboard-list" class="w-6 h-6 text-emerald-500 mb-3"></i>
+                    <h4 class="font-semibold text-slate-900 text-sm mb-1">Branch Audits</h4>
+                    <p class="text-xs text-slate-500">Internal monthly inspections.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all reveal delay-200 flex flex-col items-center justify-center text-center bg-slate-50/50 cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2">
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400"></i>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600">Custom Workflow</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI + Managed Service -->
+    <section class="py-24 px-6 bg-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">AI speed. <span class="text-primary-600">Human accountability.</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">BranchOps uses AI to do the heavy lifting of data analysis, combined with a managed service layer to make sure the work actually gets done.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- AI Column -->
+                <div class="bg-slate-900 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden reveal delay-100">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary-600/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="flex items-center gap-3 mb-8 relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
+                            <i data-lucide="cpu" class="w-6 h-6 text-primary-300"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">The AI handles:</h3>
+                    </div>
+                    <ul class="space-y-5 relative z-10">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Reading uploaded certificates</strong>
+                                <span class="text-sm text-slate-400">Automatically extracts expiry dates from vendor docs.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Flagging missing evidence</strong>
+                                <span class="text-sm text-slate-400">Notices when a photo isn't attached to a maintenance request.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Categorizing incidents</strong>
+                                <span class="text-sm text-slate-400">Routes critical complaints directly to regional managers instantly.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-white">Generating summaries</strong>
+                                <span class="text-sm text-slate-400">Creates plain-english weekly risk reports for HQ.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Managed Service Column -->
+                <div class="bg-primary-50 rounded-3xl p-8 md:p-10 border border-primary-100 relative overflow-hidden reveal delay-200">
+                    <div class="flex items-center gap-3 mb-8 relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center border border-primary-200 shadow-sm">
+                            <i data-lucide="users" class="w-6 h-6 text-primary-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Our team handles:</h3>
+                    </div>
+                    <ul class="space-y-5 relative z-10">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900">Workflow Setup</strong>
+                                <span class="text-sm text-slate-600">We build and digitize all your forms so you don't have to lift a finger.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900">Follow-up Rules Configuration</strong>
+                                <span class="text-sm text-slate-600">Setting up the perfect escalation paths for late submissions.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900">Critical Issue Review</strong>
+                                <span class="text-sm text-slate-600">Human oversight on severe incidents or repeated compliance failures.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-600 shrink-0 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900">Continuous Improvement</strong>
+                                <span class="text-sm text-slate-600">Quarterly reviews to optimize your questions to save managers time.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospitality Focus & Use Cases -->
+    <section class="py-24 bg-slate-900 text-white px-6 relative border-t border-slate-800">
+        <div class="bg-pattern absolute inset-0 opacity-10"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Made for every hospitality operation.</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Whether you run 3 cafes or 300 quick-service restaurants, BranchOps scales to keep your operations standardized.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Use Case -->
+                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-white mb-2">Restaurant Chains</h3>
+                    <p class="text-slate-400 text-sm mb-4">Standardize quality across locations. Ensure the Friday closing checklist is actually done before staff leaves.</p>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Multi-location audit packs</li>
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Franchise standard enforcement</li>
+                    </ul>
+                </div>
+                
+                <!-- Use Case -->
+                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl reveal delay-100">
+                    <h3 class="text-xl font-bold text-white mb-2">Cafés & Bakeries</h3>
+                    <p class="text-slate-400 text-sm mb-4">Keep it simple for baristas. Digital temp logs and easy incident reporting from a phone behind the counter.</p>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Easy mobile access</li>
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Daily cleaning schedules</li>
+                    </ul>
+                </div>
+
+                <!-- Use Case -->
+                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl reveal delay-200">
+                    <h3 class="text-xl font-bold text-white mb-2">Cloud Kitchens</h3>
+                    <p class="text-slate-400 text-sm mb-4">High-volume food safety tracking without slowing down the line. Perfect HACCP compliance logs.</p>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Allergen incident tracking</li>
+                        <li class="flex gap-2"><i data-lucide="arrow-right" class="w-4 h-4 text-primary-400"></i> Equipment maintenance requests</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Teaser -->
+    <section id="pricing" class="py-24 px-6 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Simple pricing by location.</h2>
+                <p class="text-slate-600 text-lg">Unlimited users. Pay only for the locations you manage.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 card-shadow flex flex-col reveal delay-100">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">Starter</h3>
+                    <p class="text-sm text-slate-500 mb-8">For small chains getting organized</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Core opening/closing checklists</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Automated email reminders</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Basic HQ dashboard</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Monthly summary report</li>
+                    </ul>
+                    <a href="#demo" class="w-full py-3 rounded-xl border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50 transition-colors text-center">Talk to sales</a>
+                </div>
+
+                <!-- Growth -->
+                <div class="bg-white p-8 rounded-3xl border-2 border-primary-500 shadow-[0_20px_40px_-15px_rgba(79,70,229,0.2)] flex flex-col relative transform md:-translate-y-4 reveal delay-200">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 gradient-bg text-white text-xs font-bold rounded-full shadow-md">RECOMMENDED</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">Growth</h3>
+                    <p class="text-sm text-slate-500 mb-8">For growing hospitality teams</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> <strong>Everything in Starter</strong></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Food safety & HACCP logs</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Incident & complaint workflows</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> AI risk summaries & escalations</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-primary-500 shrink-0"></i> Automated audit-ready reports</li>
+                    </ul>
+                    <a href="#demo" class="w-full py-3 rounded-xl gradient-bg text-white font-semibold hover:shadow-lg transition-all text-center">Talk to sales</a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 flex flex-col reveal delay-300">
+                    <h3 class="text-2xl font-bold text-white mb-1">Enterprise</h3>
+                    <p class="text-sm text-slate-400 mb-8">For franchises and multi-brand groups</p>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-start gap-3 text-sm text-slate-300"><i data-lucide="check" class="w-5 h-5 text-primary-400 shrink-0"></i> <strong>Everything in Growth</strong></li>
+                        <li class="flex items-start gap-3 text-sm text-slate-300"><i data-lucide="check" class="w-5 h-5 text-primary-400 shrink-0"></i> Fully custom workflows</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-300"><i data-lucide="check" class="w-5 h-5 text-primary-400 shrink-0"></i> Vendor & staff compliance tracking</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-300"><i data-lucide="check" class="w-5 h-5 text-primary-400 shrink-0"></i> Dedicated operations manager</li>
+                        <li class="flex items-start gap-3 text-sm text-slate-300"><i data-lucide="check" class="w-5 h-5 text-primary-400 shrink-0"></i> API Integrations & SLAs</li>
+                    </ul>
+                    <a href="#demo" class="w-full py-3 rounded-xl bg-white text-slate-900 font-semibold hover:bg-slate-100 transition-colors text-center">Talk to sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Demo Form -->
+    <section id="demo" class="py-24 px-6 bg-white relative border-t border-slate-200">
+        <div class="max-w-5xl mx-auto bg-primary-900 rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-600 rounded-full blur-3xl opacity-30 -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10 items-center">
+                <div class="text-white">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Keep every branch inspection-ready.</h2>
+                    <p class="text-primary-100 text-lg mb-8">BranchOps runs your recurring compliance workflows so your team can focus on serving customers. Less chasing. Fewer surprises. Better branches.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+                            <span>Setup takes days, not months</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+                            <span>Zero training required for branch staff</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4 text-white"></i></div>
+                            <span>Customized to your exact SOPs</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Demo Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Book a demo</h3>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Demo requested successfully!');">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">First Name</label>
+                                <input type="text" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="Jane">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Last Name</label>
+                                <input type="text" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Work Email</label>
+                            <input type="email" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="jane@company.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Company Name</label>
+                            <input type="text" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="Acme Hospitality">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Locations</label>
+                                <select class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm bg-white">
+                                    <option>1-10</option>
+                                    <option>11-50</option>
+                                    <option>51-200</option>
+                                    <option>200+</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Business Type</label>
+                                <select class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm bg-white">
+                                    <option>Restaurant Chain</option>
+                                    <option>Cafe / Bakery</option>
+                                    <option>Franchise</option>
+                                    <option>Hotel / Resort</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Anything specific you're looking to solve?</label>
+                            <textarea rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="e.g. Need to digitize our daily fridge temp logs..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 mt-2 gradient-bg text-white font-semibold rounded-lg hover:shadow-lg transition-all">Get Started</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary-600 flex items-center justify-center">
+                    <i data-lucide="clipboard-check" class="w-3 h-3 text-white"></i>
+                </div>
+                <span class="text-lg font-bold tracking-tight text-slate-900">Shiraz BranchOps</span>
+            </div>
+            
+            <div class="flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#" class="hover:text-primary-600">Privacy</a>
+                <a href="#" class="hover:text-primary-600">Terms</a>
+                <a href="#" class="hover:text-primary-600">Security</a>
+                <a href="index.html" class="hover:text-primary-600">Shiraz AI Core</a>
+            </div>
+
+            <p class="text-sm text-slate-500">© 2026 Shiraz BranchOps. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.borderBottomColor = 'rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.borderBottomColor = 'rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Reveal Animations on Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
