@@ -1,0 +1,7 @@
+[2026-06-13T14:54:50.312Z] GET http://localhost:8765/privacy/ → 200 (14ms, 13820B)
+[2026-06-13T14:54:50.332Z] GET https://cdn.tailwindcss.com/ → 302 (460ms, ?B)
+[2026-06-13T14:54:50.332Z] GET https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap → 200 (482ms, 25072B)
+[2026-06-13T14:54:50.793Z] GET https://cdn.tailwindcss.com/3.4.17 → 200 (48ms, 407279B)
+[2026-06-13T14:54:50.989Z] GET https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ahuQ2e8.woff2 → pending (?ms, ?B)
+[2026-06-13T14:54:50.990Z] GET https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2 → pending (?ms, ?B)
+[2026-06-13T14:54:50.990Z] GET https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8-qxTOlOVk6OThhvA.woff2 → pending (?ms, ?B)

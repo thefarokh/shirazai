@@ -3,783 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiraz AI | AI-Powered Restaurant Profit Optimization & Menu Intelligence</title>
-    <meta name="description" content="Maximize your restaurant's profitability with Shiraz AI. Our AI-driven platform optimizes menu pricing, reduces food waste, and analyzes customer behavior for automatic margin growth.">
-    <meta name="keywords" content="restaurant profit optimization, AI menu pricing, food waste reduction, restaurant analytics, menu intelligence, Shiraz AI">
+    <title>Shiraz AI, The AI operations partner for restaurants & hospitality</title>
+    <meta name="description" content="Shiraz AI is the operations partner for restaurants, cafés and hospitality groups. An AI team that grows your margins and keeps every location inspection-ready, hired like a service, working like software.">
+    <meta name="keywords" content="restaurant AI, restaurant profit optimization, food safety compliance, HACCP, menu engineering, restaurant operations, hospitality AI">
+    <meta property="og:title" content="Shiraz AI, The AI operations partner for hospitality">
+    <meta property="og:description" content="Grow your margins. Pass every inspection. Automatically.">
+    <meta property="og:type" content="website">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #fafafa;
-            overflow-x: hidden;
-        }
-        .glass {
-            background: rgba(24, 24, 27, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card {
-            background: linear-gradient(145deg, rgba(39, 39, 42, 0.4) 0%, rgba(24, 24, 27, 0.2) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(168, 85, 247, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.15);
-        }
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #34d399, #10b981, #0891b2);
-        }
-        .gradient-bg {
-            background: linear-gradient(to right, #34d399, #10b981, #0891b2);
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        
-        .glow-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #09090b; }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        display: ['Inter Tight', 'Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                    },
                     colors: {
-                        background: '#09090b',
-                        surface: '#18181b',
+                        canvas: '#FFFFFF',
+                        paper: '#F4F4F5',
+                        ink: '#0A0A0A',
+                        muted: '#71717A',
+                        line: '#E4E4E7',
                     },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
                 }
             }
         }
     </script>
+    <style>
+        html { -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', system-ui, sans-serif; background:#FFFFFF; color:#0A0A0A; overflow-x:hidden; }
+        h1,h2,h3,.display { font-family: 'Inter Tight', Inter, sans-serif; font-weight: 600; letter-spacing: -0.03em; }
+        .display { line-height: 0.98; }
+        h2 { letter-spacing: -0.028em; }
+        .em { font-style: italic; font-weight: 500; }
+        .eyebrow { font-family:'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.72rem; font-weight: 500; }
+        .reveal { opacity:0; transform: translateY(16px); transition: opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1); }
+        .reveal.in { opacity:1; transform: translateY(0); }
+        .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+        ::selection{ background:#0A0A0A; color:#FFFFFF; }
+        ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#FFFFFF}::-webkit-scrollbar-thumb{background:#d4d4d8;border-radius:6px;border:3px solid #FFFFFF}
+        .link-underline{ background-image: linear-gradient(#0A0A0A,#0A0A0A); background-size:0% 1px; background-repeat:no-repeat; background-position:0 100%; transition: background-size .3s ease; }
+        .link-underline:hover{ background-size:100% 1px; }
+    </style>
 </head>
-<body class="antialiased selection:bg-emerald-500/30 selection:text-white relative">
+<body class="antialiased">
 
-    <!-- Background glow effects -->
-    <div class="glow-blob w-[500px] h-[500px] bg-emerald-600/20 top-[-100px] left-[-100px]"></div>
-    <div class="glow-blob w-[600px] h-[600px] bg-cyan-600/20 top-[20%] right-[-200px]"></div>
-    <div class="glow-blob w-[400px] h-[400px] bg-teal-600/10 bottom-[10%] left-[10%]"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Nav -->
+    <nav id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-transparent">
+        <div class="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
             <a href="/" class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight">Shiraz AI</span>
+                <span class="font-display font-semibold text-[1.4rem] tracking-tight text-ink">Shiraz<span class="text-muted font-normal">/</span>AI</span>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-                <a href="#features" class="hover:text-white transition-colors">Platform</a>
-                <a href="#how-it-works" class="hover:text-white transition-colors">How it works</a>
-                <a href="#roi" class="hover:text-white transition-colors">ROI</a>
-                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+            <div class="hidden md:flex items-center gap-9 text-[14px] font-medium text-muted">
+                <a href="#profit" class="hover:text-ink transition-colors">Profit</a>
+                <a href="#comply" class="hover:text-ink transition-colors">Compliance</a>
+                <a href="#managed" class="hover:text-ink transition-colors">Managed service</a>
+                <a href="operations/" class="hover:text-ink transition-colors">Operations</a>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="operations/" class="hidden md:block text-sm font-medium text-zinc-400 hover:text-white transition-colors mr-4">Operations</a>
-                <button class="hidden md:block px-4 py-2 text-sm font-medium text-white hover:text-zinc-300 transition-colors">Log in</button>
-                <button class="px-5 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 border border-white/10 rounded-full transition-all">Book Demo</button>
-            </div>
+            <a href="#demo" class="hidden sm:inline-flex items-center px-5 py-2.5 text-[13.5px] font-medium text-canvas bg-ink rounded-full hover:bg-muted transition-colors">Book a demo</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 md:pt-40 pb-20 px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-            <!-- Text Content -->
-            <div class="text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium mb-8 reveal">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    AI that increases restaurant profit automatically
-                </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 reveal delay-100 leading-tight">
-                    Scale Your Restaurant <br/>
-                    <span class="gradient-text">Profit with AI.</span><br/> Automatically.
-                </h1>
-                <p class="text-lg md:text-xl text-zinc-400 mb-10 max-w-xl reveal delay-200">
-                    Analyze menu pricing, inventory, waste, and customer behavior to increase margins automatically without lifting a finger.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-start gap-4 reveal delay-300">
-                    <button class="w-full sm:w-auto px-8 py-3.5 text-base font-medium text-white gradient-bg rounded-full hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                        Book Demo
-                    </button>
-                    <button class="w-full sm:w-auto px-8 py-3.5 text-base font-medium text-white bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700 rounded-full transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
-                        See AI Analysis
-                    </button>
-                </div>
+    <!-- Hero -->
+    <header class="relative pt-36 md:pt-44 pb-20 md:pb-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <p class="eyebrow text-muted reveal">The AI operations partner for hospitality</p>
+            <h1 class="display text-[3.1rem] sm:text-[4.4rem] lg:text-[5.6rem] mt-6 max-w-5xl reveal d1">
+                Grow your margins.<br>Pass every inspection.<br><span class="em">Automatically.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted mt-8 max-w-2xl leading-relaxed reveal d2">
+                Shiraz AI is the operations partner for restaurants, cafés and multi-unit groups, an AI team that finds the profit hiding in your menu and keeps every location inspection-ready. You hire it like a service. It works like software.
+            </p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-10 reveal d3">
+                <a href="#demo" class="inline-flex items-center gap-2 px-7 py-3.5 text-[15px] font-medium text-canvas bg-ink rounded-full hover:bg-muted transition-colors">
+                    Book a demo
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="#demo" class="inline-flex items-center gap-2 px-7 py-3.5 text-[15px] font-medium text-ink bg-transparent border border-line rounded-full hover:border-ink transition-colors">
+                    Get a free margin audit
+                </a>
             </div>
 
-            <!-- Hero Visual (Dashboard Mockup) -->
-            <div class="relative reveal delay-300 mt-10 lg:mt-0 w-full">
-                <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20 bottom-0 top-[50%]"></div>
-                <div class="glass-card rounded-2xl border border-white/10 p-2 overflow-hidden shadow-2xl relative">
-                    <!-- App Top Bar -->
-                    <div class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-zinc-900/50">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        </div>
-                        <div class="text-xs text-zinc-500 font-medium">shiraz-ai-dashboard.app</div>
-                        <div class="w-16"></div>
-                    </div>
-                    <!-- Dashboard Content -->
-                    <div class="bg-zinc-950 p-6 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-                        <!-- Main Graph -->
-                        <div class="col-span-2 glass-card rounded-xl p-6 border border-white/5">
-                            <div class="flex justify-between items-start mb-6">
+            <!-- Hero visual: clean, flat product mock -->
+            <div class="mt-16 md:mt-20 reveal d4">
+                <div class="rounded-2xl border border-line bg-paper p-3 md:p-4">
+                    <div class="grid md:grid-cols-5 gap-3 md:gap-4">
+                        <!-- Margin memo -->
+                        <div class="md:col-span-3 bg-canvas rounded-xl border border-line p-6 md:p-7">
+                            <div class="flex items-center justify-between mb-5">
                                 <div>
-                                    <h3 class="text-zinc-400 text-sm font-medium">Projected Monthly Profit</h3>
-                                    <div class="text-3xl font-bold text-white mt-1">$42,850 <span class="text-green-400 text-sm font-medium ml-2">+12.4%</span></div>
+                                    <p class="eyebrow text-muted">Monday margin memo</p>
+                                    <p class="font-display text-xl font-semibold mt-1.5">Westside Café · Week 24</p>
                                 </div>
-                                <div class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs font-medium border border-green-500/20">Optimized</div>
+                                <span class="text-xs font-medium text-canvas bg-ink px-3 py-1 rounded-full">+$3,240 found</span>
                             </div>
-                            <!-- Mock Graph -->
-                            <div class="h-40 flex items-end gap-2">
-                                <div class="w-full bg-emerald-500/20 rounded-t-sm h-[30%] relative group"><div class="absolute inset-0 bg-gradient-to-t from-emerald-500/0 to-emerald-500/50 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
-                                <div class="w-full bg-emerald-500/20 rounded-t-sm h-[45%] relative group"><div class="absolute inset-0 bg-gradient-to-t from-emerald-500/0 to-emerald-500/50 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
-                                <div class="w-full bg-emerald-500/20 rounded-t-sm h-[40%] relative group"><div class="absolute inset-0 bg-gradient-to-t from-emerald-500/0 to-emerald-500/50 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
-                                <div class="w-full bg-emerald-500/40 rounded-t-sm h-[60%] relative group"><div class="absolute inset-0 bg-gradient-to-t from-emerald-500/0 to-emerald-500/80 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
-                                <div class="w-full bg-emerald-500/60 rounded-t-sm h-[85%] relative group"><div class="absolute inset-0 bg-gradient-to-t from-emerald-500/0 to-emerald-500/90 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
-                                <div class="w-full gradient-bg rounded-t-sm h-[100%] relative group"><div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div></div>
+                            <div class="space-y-0 text-[15px]">
+                                <div class="flex items-center justify-between py-3 border-t border-line">
+                                    <span class="text-ink">Raise <em class="not-italic font-medium">Lamb Plate</em> by $1.50, demand inelastic</span>
+                                    <span class="text-muted whitespace-nowrap ml-4">+$1,180/mo</span>
+                                </div>
+                                <div class="flex items-center justify-between py-3 border-t border-line">
+                                    <span class="text-ink">Cut <em class="not-italic font-medium">Kale Salad</em>, 40% of produce waste</span>
+                                    <span class="text-muted whitespace-nowrap ml-4">+$610/mo</span>
+                                </div>
+                                <div class="flex items-center justify-between py-3 border-t border-line">
+                                    <span class="text-ink">Chicken 12% over your East Side price</span>
+                                    <span class="text-muted whitespace-nowrap ml-4">renegotiate</span>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex gap-3">
+                                <button class="px-4 py-2 text-[13px] font-medium text-canvas bg-ink rounded-full">Approve all</button>
+                                <button class="px-4 py-2 text-[13px] font-medium text-ink border border-line rounded-full">Review</button>
                             </div>
                         </div>
-                        
-                        <!-- AI Insights -->
-                        <div class="glass-card rounded-xl p-6 border border-white/5 flex flex-col gap-4">
-                            <h3 class="text-sm font-medium flex items-center gap-2">
-                                <i data-lucide="zap" class="w-4 h-4 text-emerald-400"></i> AI Actions
-                            </h3>
-                            <div class="bg-zinc-900/50 p-3 rounded-lg border border-white/5 flex gap-3 items-start">
-                                <div class="w-8 h-8 rounded bg-green-500/10 flex items-center justify-center shrink-0">
-                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-green-400"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-zinc-200">Increase Burger Price</div>
-                                    <div class="text-xs text-zinc-500 mt-1">+6% based on high demand</div>
-                                </div>
+                        <!-- Readiness -->
+                        <div class="md:col-span-2 bg-ink rounded-xl p-6 md:p-7 text-canvas flex flex-col">
+                            <p class="eyebrow text-white/40">Compliance readiness</p>
+                            <div class="mt-4 flex items-end gap-2">
+                                <span class="font-display font-semibold text-6xl leading-none tracking-tight">98</span>
+                                <span class="text-white/40 mb-2 text-sm">/ 100</span>
                             </div>
-                            <div class="bg-zinc-900/50 p-3 rounded-lg border border-white/5 flex gap-3 items-start">
-                                <div class="w-8 h-8 rounded bg-red-500/10 flex items-center justify-center shrink-0">
-                                    <i data-lucide="alert-triangle" class="w-4 h-4 text-red-400"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-medium text-zinc-200">High Avocado Waste</div>
-                                    <div class="text-xs text-zinc-500 mt-1">Reduce ordering by 15%</div>
-                                </div>
+                            <p class="text-sm text-white/50 mt-2">All locations · inspection-ready</p>
+                            <div class="mt-auto pt-6 space-y-3 text-sm">
+                                <div class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white"></span><span class="text-white/75">Opening checklist complete</span></div>
+                                <div class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full border border-white/60"></span><span class="text-white/75">Fridge log chased, Uptown</span></div>
+                                <div class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white"></span><span class="text-white/75">Audit binder generated</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </header>
 
-                <!-- Floating elements -->
-                <div class="hidden md:flex absolute -right-10 top-20 glass-card p-4 rounded-xl items-center gap-4 animate-float border border-white/10 shadow-xl z-30">
-                    <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <i data-lucide="trending-up" class="w-5 h-5 text-green-400"></i>
+    <!-- Integration strip -->
+    <section class="px-6 py-14 border-y border-line">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-center eyebrow text-muted mb-8 reveal">Works with the tools you already run</p>
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-5 text-xl md:text-2xl font-display font-semibold tracking-tight text-ink/25 reveal d1">
+                <span>Toast</span>
+                <span>Square</span>
+                <span>Lightspeed</span>
+                <span>Clover</span>
+                <span>DoorDash</span>
+                <span>Uber&nbsp;Eats</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- The problem / why -->
+    <section class="px-6 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-3xl reveal">
+                <p class="eyebrow text-muted">Why it matters</p>
+                <h2 class="display text-4xl md:text-[3.4rem] mt-5">Restaurants don't have a software problem. They have a margin problem.</h2>
+                <p class="text-lg text-muted mt-6 leading-relaxed">The data to fix it already exists, in the POS, the supplier invoices, the delivery apps, the temperature logs. Nobody stitches it together for the operator. So profit leaks and inspections become a scramble.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-2xl overflow-hidden mt-14">
+                <div class="bg-canvas p-8 reveal d1">
+                    <p class="font-display font-semibold text-5xl tracking-tight text-ink">3–6%</p>
+                    <p class="text-sm text-muted mt-3 leading-relaxed">Net margin a full-service restaurant typically runs on. A two-point swing decides profit or loss.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d2">
+                    <p class="font-display font-semibold text-5xl tracking-tight text-ink">4–10%</p>
+                    <p class="text-sm text-muted mt-3 leading-relaxed">Of purchased food is lost before it reaches a plate. AI forecasting has cut this by up to ~35%.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d3">
+                    <p class="font-display font-semibold text-5xl tracking-tight text-ink">30–35%</p>
+                    <p class="text-sm text-muted mt-3 leading-relaxed">Of revenue goes to labor, and managers lose hours every week to paperwork and logs.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d4">
+                    <p class="font-display font-semibold text-5xl tracking-tight text-ink">100%</p>
+                    <p class="text-sm text-muted mt-3 leading-relaxed">Of locations must stay inspection-ready, every shift. Most do it on paper, and badly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The shift -->
+    <section class="px-6 py-24 md:py-28 bg-ink text-canvas">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <p class="eyebrow text-white/40">The shift</p>
+            <h2 class="display text-4xl md:text-6xl mt-6 max-w-4xl mx-auto">Not another dashboard.<br>An operations team you hire.</h2>
+            <p class="text-lg text-white/55 mt-8 max-w-2xl mx-auto leading-relaxed">
+                The average restaurant already juggles a POS, delivery tablets, a scheduler and accounting software. A fifth dashboard is a losing pitch. Shiraz AI absorbs the work instead, powered by AI, with a human behind it, priced like software rather than a $5,000/month consultant.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pillar 1, Profit -->
+    <section id="profit" class="px-6 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div class="reveal">
+                <p class="eyebrow text-muted">01 / Profit engine</p>
+                <h2 class="display text-4xl md:text-5xl mt-5">The profit engine that finds money you didn't know you were losing.</h2>
+                <p class="text-lg text-muted mt-6 leading-relaxed">It reads your POS data and supplier invoices, then ships ranked, dollar-quantified actions, and executes the ones you approve.</p>
+                <ul class="mt-8 space-y-5">
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">Menu engineering</p><p class="text-muted text-[15px] mt-1">Every item scored as a star, plowhorse, puzzle or dog on live recipe cost. "Raise these four, retire these two."</p></div></li>
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">Dynamic pricing & cost guards</p><p class="text-muted text-[15px] mt-1">Watches ingredient prices from invoices and flags items whose margin slipped, in the inflationary week, not at quarter-end.</p></div></li>
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">Demand forecasting & waste detection</p><p class="text-muted text-[15px] mt-1">Prep sheets and order quantities generated automatically; a weekly leak report ranked by dollars recoverable.</p></div></li>
+                </ul>
+            </div>
+            <div class="reveal d2">
+                <div class="bg-paper rounded-2xl border border-line p-7">
+                    <p class="eyebrow text-muted">Menu engineering</p>
+                    <div class="mt-5 space-y-3">
+                        <div class="flex items-center justify-between p-4 rounded-xl bg-canvas border border-line">
+                            <div><p class="font-medium">Lamb Plate</p><p class="text-xs text-muted mt-0.5">High demand · high margin</p></div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-ink text-canvas">Star</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 rounded-xl bg-canvas border border-line">
+                            <div><p class="font-medium">House Burger</p><p class="text-xs text-muted mt-0.5">Popular · margin slipping</p></div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-zinc-200 text-zinc-700">Plowhorse</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 rounded-xl bg-canvas border border-line">
+                            <div><p class="font-medium">Kale Salad</p><p class="text-xs text-muted mt-0.5">Low sales · high waste</p></div>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-full border border-ink text-ink">Retire</span>
+                        </div>
                     </div>
+                    <div class="mt-5 pt-5 border-t border-line flex items-center justify-between">
+                        <span class="text-sm text-muted">Projected monthly impact</span>
+                        <span class="font-display font-semibold text-2xl tracking-tight text-ink">+$3,240</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillar 2, Comply -->
+    <section id="comply" class="px-6 py-24 md:py-32 bg-paper border-y border-line">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div class="order-2 lg:order-1 reveal d2">
+                <div class="bg-canvas rounded-2xl border border-line p-7">
+                    <div class="flex items-center justify-between">
+                        <p class="eyebrow text-muted">Readiness · all locations</p>
+                        <span class="text-xs text-muted">live</span>
+                    </div>
+                    <div class="mt-5 space-y-3">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-paper border border-line">
+                            <span class="font-display font-semibold text-2xl tracking-tight w-12 text-ink">100</span>
+                            <div class="flex-1"><p class="font-medium text-sm">Downtown</p><p class="text-xs text-muted">Opening list complete</p></div>
+                            <span class="w-2 h-2 rounded-full bg-ink"></span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-paper border border-line border-l-2 border-l-ink">
+                            <span class="font-display font-semibold text-2xl tracking-tight w-12 text-ink">82</span>
+                            <div class="flex-1"><p class="font-medium text-sm">Westside Café</p><p class="text-xs text-ink">Missing fridge temp log, chased</p></div>
+                            <span class="w-2 h-2 rounded-full border border-ink"></span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-paper border border-line">
+                            <span class="font-display font-semibold text-2xl tracking-tight w-12 text-ink">96</span>
+                            <div class="flex-1"><p class="font-medium text-sm">Uptown</p><p class="text-xs text-muted">Audit binder ready · PDF</p></div>
+                            <span class="w-2 h-2 rounded-full bg-ink"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 reveal">
+                <p class="eyebrow text-muted">02 / Compliance OS</p>
+                <h2 class="display text-4xl md:text-5xl mt-5">Stop fearing inspections. Every location, ready every day.</h2>
+                <p class="text-lg text-muted mt-6 leading-relaxed">Managed checklists, food-safety logs and incident workflows that don't just sit there waiting for input, they chase, review, flag and document on their own.</p>
+                <ul class="mt-8 space-y-5">
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">Checklists & HACCP logs</p><p class="text-muted text-[15px] mt-1">Opening, closing, line checks, temperature and cooling logs, photo-proofed, geo- and time-stamped, templated per jurisdiction.</p></div></li>
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">One-click audit binder</p><p class="text-muted text-[15px] mt-1">A dated, signed, exportable PDF per location, the exact artifact inspectors, franchisors and insurers ask for.</p></div></li>
+                    <li class="flex gap-4"><span class="font-display text-ink text-lg mt-0.5">→</span><div><p class="font-medium text-ink">Compliance readiness score</p><p class="text-muted text-[15px] mt-1">One number, 0–100, per location. An AI compliance officer chases missing logs and answers "are we ready for an inspection tomorrow?"</p></div></li>
+                </ul>
+                <a href="operations/" class="inline-flex items-center gap-2 mt-8 text-[15px] font-medium text-ink link-underline">Explore Operations
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillar 3, Managed -->
+    <section id="managed" class="px-6 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-3xl reveal">
+                <p class="eyebrow text-muted">03 / Managed service</p>
+                <h2 class="display text-4xl md:text-5xl mt-5">An ops director for every branch, without the headcount.</h2>
+                <p class="text-lg text-muted mt-6 leading-relaxed">Every account gets a named human success manager orchestrating a fleet of AI agents. The busywork chases itself; a person stands behind the result.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-px bg-line border border-line rounded-2xl overflow-hidden mt-14">
+                <div class="bg-canvas p-8 reveal d1">
+                    <h3 class="font-display text-2xl">Monday Margin Memo</h3>
+                    <p class="text-muted text-[15px] mt-3 leading-relaxed">A one-page weekly report per location: last week's food cost, top three leaks, top three actions, compliance score. Delivered to your inbox or WhatsApp.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d2">
+                    <h3 class="font-display text-2xl">Supplier intelligence</h3>
+                    <p class="text-muted text-[15px] mt-3 leading-relaxed">Price-change alerts across vendors, cross-location price checks, and negotiation briefs before contract renewals.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d3">
+                    <h3 class="font-display text-2xl">Reputation agent</h3>
+                    <p class="text-muted text-[15px] mt-3 leading-relaxed">Drafts on-brand responses to every review and mines complaints for the operational root causes worth fixing.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d1">
+                    <h3 class="font-display text-2xl">Training nudges</h3>
+                    <p class="text-muted text-[15px] mt-3 leading-relaxed">A failed temp log triggers a two-minute refresher to that shift's staff, fixing the cause, not just logging the symptom.</p>
+                </div>
+                <div class="bg-canvas p-8 reveal d2">
+                    <h3 class="font-display text-2xl">Quarterly business review</h3>
+                    <p class="text-muted text-[15px] mt-3 leading-relaxed">Your CSM plus an AI-generated deck benchmarking each location against your portfolio and anonymized peers.</p>
+                </div>
+                <div class="bg-ink p-8 text-canvas flex flex-col justify-between reveal d3">
+                    <h3 class="font-display text-2xl">Recommend → approve → execute</h3>
+                    <p class="text-white/55 text-[15px] mt-3 leading-relaxed">AI drafts the action. You approve in one tap. The agent executes and reports the measured impact. Autonomy grows as trust does.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI -->
+    <section class="px-6 py-24 md:py-28 bg-paper border-y border-line">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <p class="eyebrow text-muted">The math</p>
+            <h2 class="display text-4xl md:text-5xl mt-5 max-w-3xl mx-auto">A single recommendation can pay for the whole partnership.</h2>
+            <p class="text-lg text-muted mt-7 max-w-2xl mx-auto leading-relaxed">
+                A location doing <span class="text-ink font-medium">$1.2M a year</span> that recovers just <span class="text-ink font-medium">1.5 points</span> of food cost saves about
+                <span class="text-ink font-semibold">$18,000 a year</span>, before counting the compliance risk it removes and the manager hours it gives back.
+            </p>
+            <div class="grid grid-cols-3 gap-8 mt-14 max-w-3xl mx-auto">
+                <div><p class="font-display font-semibold text-5xl md:text-6xl tracking-tight text-ink">3.3×</p><p class="text-sm text-muted mt-3">First-year ROI</p></div>
+                <div><p class="font-display font-semibold text-5xl md:text-6xl tracking-tight text-ink">~35%</p><p class="text-sm text-muted mt-3">Less food waste</p></div>
+                <div><p class="font-display font-semibold text-5xl md:text-6xl tracking-tight text-ink">&lt;14<span class="text-2xl align-top">d</span></p><p class="text-sm text-muted mt-3">To first value</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="px-6 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-3xl reveal">
+                <p class="eyebrow text-muted">Who it's for</p>
+                <h2 class="display text-4xl md:text-5xl mt-5">Built for the operators carrying it all themselves.</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+                <div class="reveal d1"><h3 class="font-display text-2xl">Multi-unit independents</h3><p class="text-muted text-[15px] mt-3 leading-relaxed">2–25 locations. You know margins are leaking but you don't have an analyst, and you spend weekends in spreadsheets.</p></div>
+                <div class="reveal d2"><h3 class="font-display text-2xl">Cafés & fast-casual</h3><p class="text-muted text-[15px] mt-3 leading-relaxed">Standardized menus that suit AI menu engineering, and staff who need logging to take ten seconds with wet hands.</p></div>
+                <div class="reveal d3"><h3 class="font-display text-2xl">Emerging franchisors</h3><p class="text-muted text-[15px] mt-3 leading-relaxed">Brand standards enforced and visible network-wide, without flying field consultants from store to store.</p></div>
+                <div class="reveal d4"><h3 class="font-display text-2xl">Cloud kitchens</h3><p class="text-muted text-[15px] mt-3 leading-relaxed">Margin-obsessed, digitally native, and high-volume, exactly where automated food-safety tracking earns its keep.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit wedge / demo CTA -->
+    <section id="audit" class="px-6 pb-24 md:pb-32">
+        <div class="max-w-6xl mx-auto">
+            <div id="demo" class="bg-ink text-canvas rounded-[2rem] px-8 py-14 md:px-16 md:py-20 reveal">
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
                     <div>
-                        <div class="text-xs text-zinc-400 font-medium">Margin Improved</div>
-                        <div class="text-lg font-bold text-white">+18.5%</div>
+                        <p class="eyebrow text-white/40">Start with the free audit</p>
+                        <h2 class="display text-4xl md:text-5xl mt-5">Find the $30,000 hiding in your menu.</h2>
+                        <p class="text-lg text-white/55 mt-6 leading-relaxed">Send 30 days of POS exports and a stack of invoice photos. Within 48 hours you'll get a branded report: your estimated annual leakage in dollars, your five worst-margin items, and a compliance readiness score. No commitment.</p>
+                        <ul class="mt-8 space-y-3 text-white/75 text-[15px]">
+                            <li class="flex items-center gap-3"><span class="text-canvas">✓</span> First value in under 14 days</li>
+                            <li class="flex items-center gap-3"><span class="text-canvas">✓</span> Works across any POS, we stay POS-agnostic</li>
+                            <li class="flex items-center gap-3"><span class="text-canvas">✓</span> A named success manager, not a chatbot</li>
+                        </ul>
                     </div>
-                </div>
-                
-                <div class="hidden md:flex absolute -left-10 bottom-20 glass-card p-4 rounded-xl items-center gap-4 animate-float-delayed border border-white/10 shadow-xl z-30">
-                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                        <i data-lucide="lightbulb" class="w-5 h-5 text-emerald-400"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs text-zinc-400 font-medium">New Menu Idea</div>
-                        <div class="text-sm font-bold text-white mt-0.5">Vegan Truffle Fries</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="py-10 border-y border-white/5 bg-zinc-900/20 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="text-center text-sm font-medium text-zinc-500 mb-8 uppercase tracking-widest reveal">Used by restaurants, cafés, and food chains</p>
-            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 reveal delay-100">
-                <img src="assets/logos/mcdonalds.png" alt="McDonald's" class="h-8 md:h-10 w-auto object-contain">
-                <img src="assets/logos/kfc.png" alt="KFC" class="h-8 md:h-10 w-auto object-contain">
-                <img src="assets/logos/chipotle.png" alt="Chipotle" class="h-8 md:h-10 w-auto object-contain">
-                <img src="assets/logos/illy.png" alt="illy cafe" class="h-8 md:h-10 w-auto object-contain">
-            </div>
-            <p class="text-center text-sm font-medium text-zinc-400 mt-8 reveal delay-200">Helping food businesses optimize millions in annual revenue.</p>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section id="problem" class="py-24 px-6 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">Most Restaurants Lose Profit <br/><span class="text-zinc-500">Without Realizing It</span></h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-100">
-                    <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
-                        <i data-lucide="dollar-sign" class="w-6 h-6 text-red-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Bad Pricing</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Leaving money on the table because prices aren't dynamically adjusted to demand and ingredient costs.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-200">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-6">
-                        <i data-lucide="trash-2" class="w-6 h-6 text-orange-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Food Waste</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Over-ordering perishables due to poor demand forecasting, throwing away pure profit every week.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-300">
-                    <div class="w-12 h-12 rounded-xl bg-zinc-500/10 flex items-center justify-center mb-6">
-                        <i data-lucide="pie-chart" class="w-6 h-6 text-zinc-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Low-Margin Items</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Menu is clogged with items that sell well but cost too much to make, destroying overall margins.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-300">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
-                        <i data-lucide="megaphone" class="w-6 h-6 text-blue-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Inefficient Marketing</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Running generic promotions instead of targeted campaigns based on actual customer buying behavior.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-24 px-6 relative z-10 bg-zinc-900/30 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-xs font-medium mb-4">PLATFORM</div>
-                <h2 class="text-3xl md:text-5xl font-bold">An AI Analyst for <br/><span class="gradient-text">Your Restaurant</span></h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="glass-card p-8 rounded-2xl group reveal">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="bar-chart-3" class="w-8 h-8 text-emerald-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Menu Intelligence</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Identify high-margin winners and low-performing losers instantly. Know exactly what to promote and what to cut.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl group reveal delay-100">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="tag" class="w-8 h-8 text-teal-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Smart Pricing</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">AI suggests optimal prices based on historical sales, local demand, and real-time ingredient cost fluctuations.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl group reveal delay-200">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="package" class="w-8 h-8 text-cyan-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Inventory Optimization</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Predict exactly what you need to order. Reduce waste and improve ingredient efficiency automatically.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl group reveal">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="sparkles" class="w-8 h-8 text-yellow-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">AI Menu Creation</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Generate profitable new menu ideas automatically by analyzing what ingredients you already buy in bulk.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl group reveal delay-100">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="leaf" class="w-8 h-8 text-green-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Dietary Suggestions</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Easily identify opportunities to add vegan, high-protein, or healthier alternatives that drive higher margins.</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl group reveal delay-200">
-                    <div class="flex justify-between items-start mb-6">
-                        <i data-lucide="target" class="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Marketing AI</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Launch targeted campaigns based on real customer behavior, turning one-time visitors into loyal regulars.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-24 px-6 relative z-10">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold">From Data to <span class="gradient-text">Dollars</span></h2>
-                <p class="mt-4 text-zinc-400">Setup takes minutes. The insights last forever.</p>
-            </div>
-            
-            <div class="relative">
-                <!-- Connecting line -->
-                <div class="hidden md:block absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 -translate-x-1/2"></div>
-                
-                <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-center justify-between mb-16 relative reveal">
-                    <div class="md:w-[45%] text-center md:text-right mb-6 md:mb-0">
-                        <h3 class="text-2xl font-bold text-white mb-3">1. Connect Your Data</h3>
-                        <p class="text-zinc-400 text-sm">Securely connect your POS, inventory management, and menu systems with one click. We support Toast, Square, and 20+ others.</p>
-                    </div>
-                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center border-4 border-[#09090b] relative z-10 shrink-0">
-                        <span class="text-white font-bold">1</span>
-                    </div>
-                    <div class="md:w-[45%] flex justify-center md:justify-start">
-                        <div class="glass-card p-4 rounded-xl border border-white/10 w-full max-w-xs flex gap-4 items-center">
-                            <i data-lucide="plug" class="w-6 h-6 text-zinc-400"></i>
-                            <div class="flex-1">
-                                <div class="h-2 w-full bg-zinc-800 rounded-full mb-2"></div>
-                                <div class="h-2 w-2/3 bg-zinc-800 rounded-full"></div>
-                            </div>
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-16 relative reveal delay-100">
-                    <div class="md:w-[45%] text-center md:text-left mb-6 md:mb-0">
-                        <h3 class="text-2xl font-bold text-white mb-3">2. AI Analyzes Operations</h3>
-                        <p class="text-zinc-400 text-sm">Our models crunch years of sales history, ingredient costs, waste logs, and customer buying patterns overnight.</p>
-                    </div>
-                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center border-4 border-[#09090b] relative z-10 shrink-0">
-                        <span class="text-white font-bold">2</span>
-                    </div>
-                    <div class="md:w-[45%] flex justify-center md:justify-end">
-                        <div class="glass-card p-4 rounded-xl border border-white/10 w-full max-w-xs relative overflow-hidden">
-                            <div class="absolute inset-0 bg-emerald-500/5 animate-pulse"></div>
-                            <div class="flex justify-between items-end h-16 gap-1 relative z-10">
-                                <div class="w-full bg-emerald-500/30 rounded-t h-[40%]"></div>
-                                <div class="w-full bg-emerald-500/50 rounded-t h-[70%]"></div>
-                                <div class="w-full bg-emerald-500/70 rounded-t h-[50%]"></div>
-                                <div class="w-full bg-emerald-500/90 rounded-t h-[100%]"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-center justify-between relative reveal delay-200">
-                    <div class="md:w-[45%] text-center md:text-right mb-6 md:mb-0">
-                        <h3 class="text-2xl font-bold text-white mb-3">3. Increase Profit</h3>
-                        <p class="text-zinc-400 text-sm">Wake up to actionable, plain-English recommendations. Approve them with a click and watch your margins expand.</p>
-                    </div>
-                    <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center border-4 border-[#09090b] relative z-10 shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.5)]">
-                        <span class="text-white font-bold">3</span>
-                    </div>
-                    <div class="md:w-[45%] flex justify-center md:justify-start">
-                        <div class="glass-card p-4 rounded-xl border border-green-500/30 bg-green-500/5 w-full max-w-xs flex gap-3 items-center">
-                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                                <i data-lucide="trending-up" class="w-5 h-5 text-green-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-zinc-400">New Profit Found</div>
-                                <div class="text-xl font-bold text-white">+$4,250<span class="text-xs font-normal text-zinc-500">/mo</span></div>
-                            </div>
-                        </div>
+                    <div class="bg-canvas rounded-2xl p-4 md:p-5 text-ink">
+                        <div class="formaloo--root-container" data-form-slug="eqc1Fuwj" style="width:100%;height:750px"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- AI Insights / Demo Section -->
-    <section class="py-24 px-6 relative z-10 bg-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Don't guess. <br/><span class="gradient-text">Know exactly what to do.</span></h2>
-                    <p class="text-lg text-zinc-400 mb-8">Shiraz doesn't just give you dashboards and charts. It acts as an active consultant, giving you specific tasks to improve your bottom line.</p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i></div>
-                            <span class="text-zinc-300">Daily actionable recommendations</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i></div>
-                            <span class="text-zinc-300">Revenue impact estimated before you act</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3 h-3 text-emerald-400"></i></div>
-                            <span class="text-zinc-300">Plain English, no data science degree required</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="space-y-4 reveal delay-200">
-                    <!-- Insight Card -->
-                    <div class="glass-card p-5 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="dollar-sign" class="w-5 h-5 text-blue-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Increase "Classic Burger" price by $1.50</h4>
-                                <p class="text-sm text-zinc-400 mt-1">Demand is inelastic on weekends. Cost of beef rose 4%.</p>
-                            </div>
-                        </div>
-                        <div class="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 border-t sm:border-t-0 border-white/5 pt-3 sm:pt-0">
-                            <span class="text-xs font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded">+$1,200/mo</span>
-                            <button class="text-xs px-3 py-1.5 bg-white text-black font-medium rounded hover:bg-zinc-200 transition-colors ml-auto sm:ml-0">Approve</button>
-                        </div>
-                    </div>
-
-                    <!-- Insight Card -->
-                    <div class="glass-card p-5 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="scissors" class="w-5 h-5 text-orange-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Remove "Kale Salad" from menu</h4>
-                                <p class="text-sm text-zinc-400 mt-1">High prep time, accounts for 40% of produce waste.</p>
-                            </div>
-                        </div>
-                        <div class="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 border-t sm:border-t-0 border-white/5 pt-3 sm:pt-0">
-                            <span class="text-xs font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded">+$450/mo saved</span>
-                            <button class="text-xs px-3 py-1.5 bg-white text-black font-medium rounded hover:bg-zinc-200 transition-colors ml-auto sm:ml-0">Approve</button>
-                        </div>
-                    </div>
-
-                    <!-- Insight Card -->
-                    <div class="glass-card p-5 rounded-xl border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="package-plus" class="w-5 h-5 text-emerald-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Bundle Fries + Drink</h4>
-                                <p class="text-sm text-zinc-400 mt-1">Suggest as add-on during lunch hours to increase AOV.</p>
-                            </div>
-                        </div>
-                        <div class="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1 border-t sm:border-t-0 border-white/5 pt-3 sm:pt-0">
-                            <span class="text-xs font-medium text-green-400 bg-green-400/10 px-2 py-1 rounded">+18% AOV</span>
-                            <button class="text-xs px-3 py-1.5 bg-white text-black font-medium rounded hover:bg-zinc-200 transition-colors ml-auto sm:ml-0">Approve</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROI / Stats Section -->
-    <section id="roi" class="py-20 px-6 relative z-10 border-y border-white/5">
-        <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/20 to-cyan-900/20 z-0"></div>
-        <div class="max-w-7xl mx-auto relative z-10 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">One Recommendation Could Pay <br/>for the Platform</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="reveal delay-100">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter" data-target="18">0</span>%</div>
-                    <div class="text-zinc-400 text-sm font-medium">Lower Waste</div>
-                </div>
-                <div class="reveal delay-200">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter" data-target="12">0</span>%</div>
-                    <div class="text-zinc-400 text-sm font-medium">Higher Margins</div>
-                </div>
-                <div class="reveal delay-300">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter" data-target="22">0</span>%</div>
-                    <div class="text-zinc-400 text-sm font-medium">Better Menu Perf.</div>
-                </div>
-                <div class="reveal delay-400">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter" data-target="31">0</span>%</div>
-                    <div class="text-zinc-400 text-sm font-medium">Increase in Upsells</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-24 px-6 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Simple, transparent pricing</h2>
-                <p class="text-zinc-400">Plans that scale with your business.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Starter -->
-                <div class="glass-card p-8 rounded-2xl border border-white/5 flex flex-col reveal delay-100">
-                    <h3 class="text-xl font-bold text-white mb-2">Starter</h3>
-                    <p class="text-sm text-zinc-400 mb-6">For single location cafes and restaurants.</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">$99</span>
-                        <span class="text-zinc-500">/mo</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Menu analysis</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Basic pricing suggestions</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> POS Integration</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg border border-white/10 text-white font-medium hover:bg-white/5 transition-colors">Start Free Trial</button>
-                </div>
-
-                <!-- Growth (Highlighted) -->
-                <div class="glass-card p-8 rounded-2xl border border-emerald-500/50 bg-emerald-500/5 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(168,85,247,0.15)] reveal delay-200">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full">MOST POPULAR</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Growth</h3>
-                    <p class="text-sm text-zinc-400 mb-6">For growing multi-location restaurants.</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">$399</span>
-                        <span class="text-zinc-500">/mo</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Everything in Starter</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Inventory optimization</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Advanced AI insights</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Multi-location dashboard</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg gradient-bg text-white font-medium hover:opacity-90 transition-opacity">Get Started</button>
-                </div>
-
-                <!-- Enterprise -->
-                <div class="glass-card p-8 rounded-2xl border border-white/5 flex flex-col reveal delay-300">
-                    <h3 class="text-xl font-bold text-white mb-2">Enterprise</h3>
-                    <p class="text-sm text-zinc-400 mb-6">For large food chains and franchises.</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-white">Custom</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Everything in Growth</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Custom AI model training</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Dedicated account manager</li>
-                        <li class="flex items-center gap-3 text-sm text-zinc-300"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Custom integrations (API)</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg border border-white/10 text-white font-medium hover:bg-white/5 transition-colors">Contact Sales</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-24 px-6 relative z-10 bg-zinc-900/20 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold">Trusted by hospitality leaders</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-100">
-                    <div class="flex gap-1 mb-6">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                    </div>
-                    <p class="text-zinc-300 mb-8 italic">"We were manually analyzing spreadsheets to figure out pricing. Shiraz AI found a 12% margin improvement in the first week just by tweaking prices on high-demand items."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">SM</div>
-                        <div>
-                            <div class="text-white font-medium text-sm">Sarah Mitchell</div>
-                            <div class="text-zinc-500 text-xs">Owner, The Daily Grind Café</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-200">
-                    <div class="flex gap-1 mb-6">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                    </div>
-                    <p class="text-zinc-300 mb-8 italic">"The waste reduction recommendations alone paid for the software in two days. It perfectly predicted what we needed to order based on historical weather and foot traffic."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">JR</div>
-                        <div>
-                            <div class="text-white font-medium text-sm">James Rodriguez</div>
-                            <div class="text-zinc-500 text-xs">Manager, Harbor Seafood</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="glass-card p-8 rounded-2xl reveal delay-300">
-                    <div class="flex gap-1 mb-6">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-500 text-yellow-500"></i>
-                    </div>
-                    <p class="text-zinc-300 mb-8 italic">"As a franchise operator across 15 locations, having a unified AI tell us exactly which stores are bleeding profit and exactly how to fix it is essentially a superpower."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-xs">DK</div>
-                        <div>
-                            <div class="text-white font-medium text-sm">David Kim</div>
-                            <div class="text-zinc-500 text-xs">VP Operations, Burger Works</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-32 px-6 relative overflow-hidden z-10">
-        <!-- Cinematic background -->
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/40 via-background to-background z-0"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
-            <h2 class="text-5xl md:text-7xl font-bold mb-8">Stop Guessing. <br/><span class="gradient-text">Start Optimizing.</span></h2>
-            <p class="text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">Join hundreds of forward-thinking restaurants using AI to maximize their bottom line.</p>
-            <button class="px-10 py-4 text-lg font-bold text-white gradient-bg rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(168,85,247,0.5)]">
-                Book a Demo
-            </button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/10 relative z-10 bg-zinc-950">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 mb-4">
-                    <div class="w-6 h-6 rounded bg-emerald-500 flex items-center justify-center">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
-                    </div>
-                    <span class="text-xl font-bold tracking-tight text-white">Shiraz AI</span>
+    <footer class="px-6 py-16 border-t border-line">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-10">
+                <div class="md:col-span-5">
+                    <span class="font-display font-semibold text-[1.4rem] tracking-tight">Shiraz<span class="text-muted font-normal">/</span>AI</span>
+                    <p class="text-muted text-[15px] mt-4 max-w-sm leading-relaxed">The AI operations partner for restaurants, cafés and hospitality. Higher margins, passed inspections, without lifting a finger.</p>
                 </div>
-                <p class="text-sm text-zinc-500 max-w-sm mb-6">AI that increases restaurant profit automatically. Stop leaving money on the table.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <div class="md:col-span-2 md:col-start-8">
+                    <p class="eyebrow text-muted mb-4">Product</p>
+                    <ul class="space-y-2.5 text-[15px] text-muted">
+                        <li><a href="/#profit" class="hover:text-ink transition-colors">Profit engine</a></li>
+                        <li><a href="/#comply" class="hover:text-ink transition-colors">Compliance OS</a></li>
+                        <li><a href="/operations/" class="hover:text-ink transition-colors">Operations</a></li>
+                        <li><a href="/#managed" class="hover:text-ink transition-colors">Managed service</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2">
+                    <p class="eyebrow text-muted mb-4">Company</p>
+                    <ul class="space-y-2.5 text-[15px] text-muted">
+                        <li><a href="/#demo" class="hover:text-ink transition-colors">Book a demo</a></li>
+                        <li><a href="https://shiraz.vc" class="hover:text-ink transition-colors">Shiraz.vc</a></li>
+                        <li><a href="/privacy/" class="hover:text-ink transition-colors">Privacy</a></li>
+                        <li><a href="/terms/" class="hover:text-ink transition-colors">Terms</a></li>
+                    </ul>
                 </div>
             </div>
-            <div>
-                <h4 class="text-white font-medium mb-4">Product</h4>
-                <ul class="space-y-2 text-sm text-zinc-500">
-                    <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
-                    <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
-                    <li><a href="#roi" class="hover:text-white transition-colors">ROI Calculator</a></li>
-                    <li><a href="operations/" class="hover:text-white transition-colors text-emerald-400">Operations (BranchOps)</a></li>
-                </ul>
+            <div class="mt-14 pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-muted">
+                <p>© 2026 Shiraz AI. All rights reserved.</p>
+                <p>An AI venture built on <a href="https://formaloo.com" target="_blank" rel="noopener" class="text-ink hover:text-muted transition-colors link-underline">Formaloo</a>.</p>
             </div>
-            <div>
-                <h4 class="text-white font-medium mb-4">Company</h4>
-                <ul class="space-y-2 text-sm text-zinc-500">
-                    <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 text-center md:text-left text-sm text-zinc-600 flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; 2026 Shiraz AI, Inc. All rights reserved.</p>
-            <p class="mt-2 md:mt-0 text-zinc-500 flex items-center gap-1">Made with <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-red-500"></i> for the food industry.</p>
         </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-zinc-950/80', 'shadow-lg');
-                navbar.classList.remove('bg-transparent');
+        // Nav background on scroll
+        const nav = document.getElementById('nav');
+        const onScroll = () => {
+            if (window.scrollY > 24) {
+                nav.classList.add('bg-canvas/85','backdrop-blur-md','border-line');
             } else {
-                navbar.classList.remove('bg-zinc-950/80', 'shadow-lg');
-                navbar.classList.add('bg-transparent');
+                nav.classList.remove('bg-canvas/85','backdrop-blur-md','border-line');
             }
-        });
+        };
+        window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-        // Reveal Animations on Scroll
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Counter Animation for ROI
-        const counters = document.querySelectorAll('.counter');
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    const target = +entry.target.getAttribute('data-target');
-                    const duration = 2000;
-                    const increment = target / (duration / 16);
-                    let current = 0;
-                    
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            entry.target.innerText = Math.ceil(current);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            entry.target.innerText = target;
-                        }
-                    };
-                    updateCounter();
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => counterObserver.observe(counter));
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
+    <script src="https://embed.formaloo.me/v1/main.js" defer async></script>
 </body>
 </html>
